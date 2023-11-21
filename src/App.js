@@ -11,9 +11,6 @@ import reports from "./img/reports.png";
 import advisor from "./img/advisor.png";
 import contacts from "./img/contacts.png";
 
-function Dashboard() {
-  return <h2>Dashboard Page</h2>;
-}
 
 function App() {
   const verticalNavItems = [
