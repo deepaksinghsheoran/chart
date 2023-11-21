@@ -1,5 +1,8 @@
 // HorizontalNavbar.js
 import React, { useState } from "react";
+import advisor from "../../img/advisor.png";
+import dropdown from "../../img/dropdown.png";
+import notification from "../../img/notification.png";
 
 const HorizontalNavbar = ({ searchbar, notificationIconSrc, userIconSrc }) => {
   const [showDropdown, setShowDropdown] = useState(false);
@@ -12,7 +15,7 @@ const HorizontalNavbar = ({ searchbar, notificationIconSrc, userIconSrc }) => {
     <div className="hori-navbar">
       <div className="searchbar">{searchbar}</div>
       <div className="notification" onClick={toggleDropdown}>
-        <img src="./img/notification.png" alt="Notification" />
+        <img src={notification} alt="Notification" />
         {showDropdown && (
           <div className="dropdown">
             
@@ -20,8 +23,8 @@ const HorizontalNavbar = ({ searchbar, notificationIconSrc, userIconSrc }) => {
         )}
       </div>
       <div className="user-icon" onClick={toggleDropdown}>
-        <img src="./img/advisor.png" alt="User" />
-        <img src="./img/dropdown.png" alt="Dropdown" />
+        <img src={advisor} alt="User" />
+        <img src={dropdown} alt="Dropdown" />
        
         {showDropdown && (
           <div className="dropdown">

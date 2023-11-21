@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import assiduus from "../../img/Assiduus.png";
 
 const CustomNav = ({ li }) => {
   const [window, setWindow] = useState(false);
@@ -16,7 +17,7 @@ const CustomNav = ({ li }) => {
       {/* <div className="burger" onClick={() => openClose()}>
         <img src="./img/menu.png" alt="burger" />
       </div> */}
-      <div className="assiduus"><img src="./img/assiduus.png" alt="ASSIDUUS" /></div>
+      <div className="assiduus"><img src={assiduus} alt="ASSIDUUS" /></div>
       <ul className="navbar__list">
         {li.map((item, i) => (
           <div className="navbar__li-box" key={i}>

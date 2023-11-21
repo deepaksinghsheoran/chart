@@ -4,7 +4,12 @@ import VarNav from "./components/Menu/VarNavbar";
 import HorNav from "./components/Menu/HoriNavbar";
 import "./index.scss";
 import Chart from "./components/Card/chart.js";
-
+import dashboard from "./img/dashboard.png";
+import account from "./img/account.png";
+import payroll from "./img/payroll.png";
+import reports from "./img/reports.png";
+import advisor from "./img/advisor.png";
+import contacts from "./img/contacts.png";
 
 function Dashboard() {
   return <h2>Dashboard Page</h2>;
@@ -12,12 +17,12 @@ function Dashboard() {
 
 function App() {
   const verticalNavItems = [
-    ["Dashboard", "./img/dashboard.png"],
-    ["Account", "./img/account.png"],
-    ["Payroll", "./img/payroll.png"],
-    ["Reports", "./img/reports.png"],
-    ["Advisor", "./img/advisor.png"],
-    ["Contacts", "./img/contacts.png"]
+    ["Dashboard", dashboard],
+    ["Account", account],
+    ["Payroll", payroll],
+    ["Reports", reports],
+    ["Advisor", advisor],
+    ["Contacts", contacts]
   ];
   const searchbar = <input type="text" placeholder="Search" />;
 
