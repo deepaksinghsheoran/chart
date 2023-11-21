@@ -77,7 +77,7 @@ const ColumnChart = ({ data }) => {
         .duration(500)
         .style('opacity', 0);
     }
-  }, [data]);
+  }, [data, height, margin.left, width]);
 
   useEffect(() => {
     drawChart();

@@ -36,6 +36,7 @@ const ChartCard = () => {
         setSelectedMonth(selectedKey);
         setChartData(generateRandomData(selectedKey));
         setColumnChartData(generateRandomColumnData(selectedKey));
+        setCashFlowData(generateCashFlowData(selectedMonth));
         console.log(`Selected Month: ${selectedKey}`);
     };
 
@@ -95,7 +96,7 @@ const ChartCard = () => {
         return columnData;
     }
     
-    function generateCashFlowData() {
+    function generateCashFlowData(selectedMonth) {
         const cashFlowData = monthss.map((month, index) => {
             const inCash = Math.floor(Math.random() * 100);
             const outCash = Math.floor(Math.random() * inCash); 
