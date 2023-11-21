@@ -14,9 +14,9 @@ const CustomNav = ({ li }) => {
   };
   return (
     <nav className="navbar-menu" style={{ width: window === false ? 250 : 60 }}>
-      {/* <div className="burger" onClick={() => openClose()}>
+      <div className="burger" onClick={() => openClose()}>
         <img src="./img/menu.png" alt="burger" />
-      </div> */}
+      </div>
       <div className="assiduus"><img src={assiduus} alt="ASSIDUUS" /></div>
       <ul className="navbar__list">
         {li.map((item, i) => (
