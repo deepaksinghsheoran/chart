@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import * as d3 from 'd3';
 
 const ColumnChart = ({ data }) => {
@@ -7,17 +7,11 @@ const ColumnChart = ({ data }) => {
   const width = 400 - margin.left - margin.right;
   const height = 300 - margin.top - margin.bottom;
 
-  useEffect(() => {
-    drawChart();
-  }, [data]);
-
-  const drawChart = () => {
+  const drawChart = useCallback(() => {
     const svg = d3.select(chartRef.current);
 
-    
     svg.selectAll('*').remove();
 
-    
     const xScale = d3
       .scaleBand()
       .domain(data.map(d => d.month))
@@ -29,7 +23,6 @@ const ColumnChart = ({ data }) => {
       .domain([0, d3.max(data, d => Math.max(d.inCash, d.outCash))])
       .range([height, 0]);
 
-    
     svg.selectAll('.inCash')
       .data(data)
       .enter()
@@ -43,7 +36,6 @@ const ColumnChart = ({ data }) => {
       .on('mouseover', handleMouseOver)
       .on('mouseout', handleMouseOut);
 
-    
     svg.selectAll('.outCash')
       .data(data)
       .enter()
@@ -57,16 +49,13 @@ const ColumnChart = ({ data }) => {
       .on('mouseover', handleMouseOver)
       .on('mouseout', handleMouseOut);
 
-    
     const xAxis = d3.axisBottom(xScale);
     svg.append('g')
       .attr('transform', `translate(0, ${height})`)
       .call(xAxis);
 
-    
     svg.selectAll('.domain').remove();
 
-    
     const tooltip = d3.select('body')
       .append('div')
       .attr('class', 'tooltip')
@@ -88,7 +77,11 @@ const ColumnChart = ({ data }) => {
         .duration(500)
         .style('opacity', 0);
     }
-  };
+  }, [data]);
+
+  useEffect(() => {
+    drawChart();
+  }, [data, drawChart]);
 
   return (
     <svg ref={chartRef} width={width + margin.left + margin.right} height={height + margin.top + margin.bottom}></svg>

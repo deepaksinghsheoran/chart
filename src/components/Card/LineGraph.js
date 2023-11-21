@@ -1,15 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import * as d3 from "d3";
 
 const LineGraph = ({ data }) => {
   console.log(data);
   const chartRef = useRef();
 
-  useEffect(() => {
-    createLineChart();
-  }, [data]);
-
-  const createLineChart = () => {
+  const createLineChart = useCallback(() => {
     const svg = d3.select(chartRef.current);
 
     // Clear previous chart
@@ -56,7 +52,11 @@ const LineGraph = ({ data }) => {
       .attr("y", d => yScale(d.value) + margin.top - 5)
       .attr("text-anchor", "middle")
       // .text(d => d.value);
-  };
+  }, [data]);
+
+  useEffect(() => {
+    createLineChart();
+  }, [data, createLineChart]);
 
   return <svg ref={chartRef} width="100%" height={150} />;
 };

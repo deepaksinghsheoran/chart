@@ -1,15 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useCallback } from "react";
 import * as d3 from "d3";
 
 const ColumnChart = ({ data }) => {
   console.log(data);
   const chartRef = useRef();
 
-  useEffect(() => {
-    createColumnChart();
-  }, [data]);
-
-  const createColumnChart = () => {
+  const createColumnChart = useCallback(() => {
     const svg = d3.select(chartRef.current);
 
     // Clear previous chart
@@ -50,7 +46,11 @@ const ColumnChart = ({ data }) => {
       .attr("y", d => yScale(d.value) + margin.top)
       .attr("width", xScale.bandwidth())
       .attr("height", d => height - yScale(d.value));
-  };
+  }, [data]);
+
+  useEffect(() => {
+    createColumnChart();
+  }, [data, createColumnChart]);
 
   return <svg ref={chartRef} width={300} height={150} />;
 };
